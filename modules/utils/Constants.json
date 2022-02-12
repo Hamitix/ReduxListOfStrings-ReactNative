@@ -1,0 +1,17 @@
+{
+  "titleMainScreen": "Persisted List",
+  "descButtonAddElement": "Enter a new element:",
+  "placeholderButtonAddElement": "Enter a new element",
+  "textButtonAddElemeent": "Add Element",
+  "textButtonDeleteALlElements": "Delete all elements",
+  "listEmpty": "List is empty",
+  "reducerActions": {
+    "addElement": "ADD_ELEMENT",
+    "removeElement": "REMOVE_ELEMENT",
+    "reset": "RESET"
+  },
+  "colors": {
+    "placeholderInput": "grey",
+    "selectionInput": "orange"
+  }
+}
