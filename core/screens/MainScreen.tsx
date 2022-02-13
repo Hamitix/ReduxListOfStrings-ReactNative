@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { View, FlatList, Text, Pressable, TextInput, SafeAreaView } from 'react-native'
+import { Entypo } from '@expo/vector-icons'
 
 import styled from 'styled-components'
 
@@ -65,7 +66,7 @@ const MainScreen = () => {
     <HorizontalContainer>
       <Body>{item[1]}</Body>
       <Pressable onPress={() => deleteElement(item)}>
-        <DeleteElementText>X</DeleteElementText>
+        <Icon name="circle-with-cross" size={20} color={constants.colors.red} />
       </Pressable>
     </HorizontalContainer>
   )
@@ -120,6 +121,7 @@ const HorizontalContainer = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  align-items: center;
 `
 
 // TEXTS
@@ -146,10 +148,6 @@ const Body = styled(Text)`
 const TextPressable = styled(Body)`
   color: ${constants.colors.black};
 `
-const DeleteElementText = styled(Body)`
-  color: ${constants.colors.red};
-  font-size: 20px;
-`
 
 // OTHERS
 const StyledPressable = styled(Pressable)<{ disabled: boolean }>`
@@ -160,6 +158,12 @@ const StyledPressable = styled(Pressable)<{ disabled: boolean }>`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+`
+
+const Icon = styled(Entypo)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const StyledTextInput = styled(TextInput)`
