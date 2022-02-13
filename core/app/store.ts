@@ -1,7 +1,8 @@
 import { configureStore, MiddlewareArray } from '@reduxjs/toolkit'
-import elementsReducer from '../reducers/stringReducer'
 
-import { asyncStorageMiddleware } from '../middleware/asyncStorageMiddleware'
+import elementsReducer from 'reducers/stringReducer'
+
+import { asyncStorageMiddleware } from 'middleware/asyncStorageMiddleware'
 
 export const store = configureStore({
   reducer: {

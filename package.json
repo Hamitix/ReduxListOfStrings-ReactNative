@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "expo": "~44.0.0",
-    "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -26,6 +25,16 @@
     "@types/react-native": "~0.64.12",
     "@types/react-redux": "^7.1.7",
     "@types/styled-components": "5.1.0"
+  },
+  "workspaces": {
+    "packages": [
+      "core/*",
+      "core/app/*",
+      "core/middleware/*",
+      "core/reducers/*",
+      "core/screens/*",
+      "core/utils/*"
+    ]
   },
   "private": true
 }

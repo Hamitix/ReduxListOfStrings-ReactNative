@@ -1,8 +1,8 @@
 import { Middleware } from 'redux'
 
-import { writeItemToStorage, removeValueFromStorage, clearAllItems } from '../app/asyncStorage'
+import { writeItemToStorage, removeValueFromStorage, clearAllItems } from 'app/asyncStorage'
 
-import constants from '../utils/Constants.json'
+import constants from 'utils/Constants.json'
 
 export const asyncStorageMiddleware: Middleware = (storeAPI) => (next) => (action) => {
   if (action.type === constants.reducerActions.addElement) {

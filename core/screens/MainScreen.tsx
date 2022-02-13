@@ -3,10 +3,10 @@ import { View, FlatList, Text, Pressable, TextInput, SafeAreaView } from 'react-
 
 import styled from 'styled-components'
 
-import { useAppDispatch } from '../app/hooks'
-import { getAllItemsFromStorage } from '../app/asyncStorage'
+import { useAppDispatch } from 'app/hooks'
+import { getAllItemsFromStorage } from 'app/asyncStorage'
 
-import constants from '../utils/Constants.json'
+import constants from 'utils/Constants.json'
 
 const MainScreen = () => {
   const dispatch = useAppDispatch()
@@ -25,7 +25,7 @@ const MainScreen = () => {
         setAllKeysValuePairs(keyValuePairs)
       }
     } catch (err) {
-      console.log(`Error while retriving elements from in AsyncStorage : `, err)
+      console.log(constants.errors.retrieveAllElements, err)
     }
   }
 
@@ -60,11 +60,12 @@ const MainScreen = () => {
     })
     setAllKeysValuePairs([])
   }
+
   const renderItem = ({ item }: { item: [string, string | null] }) => (
     <HorizontalContainer>
       <Body>{item[1]}</Body>
       <Pressable onPress={() => deleteElement(item)}>
-        <DeletePressableText>X</DeletePressableText>
+        <DeleteElementText>X</DeleteElementText>
       </Pressable>
     </HorizontalContainer>
   )
@@ -76,13 +77,15 @@ const MainScreen = () => {
     <ScreenContainer>
       <Title>{constants.titleMainScreen}</Title>
       <Subtitle>{constants.descButtonAddElement}</Subtitle>
+
       <StyledTextInput
         onChangeText={setInputText}
         value={inputText}
-        placeholderTextColor={constants.colors.placeholderInput}
+        placeholderTextColor={constants.colors.grey}
         placeholder={constants.placeholderButtonAddElement}
-        selectionColor={constants.colors.selectionInput}
+        selectionColor={constants.colors.orange}
       />
+
       <StyledPressable onPress={addElement} disabled={inputText.trim().length === 0}>
         <TextPressable>{constants.textButtonAddElemeent}</TextPressable>
       </StyledPressable>
@@ -94,6 +97,7 @@ const MainScreen = () => {
         ItemSeparatorComponent={Separator}
         ListEmptyComponent={ListEmptyComponent}
       />
+
       <StyledPressable onPress={deleteAllElements} disabled={allKeysValuePairs.length === 0}>
         <TextPressable>{constants.textButtonDeleteALlElements}</TextPressable>
       </StyledPressable>
@@ -104,7 +108,6 @@ const MainScreen = () => {
 export default MainScreen
 
 // CONTAINERS
-
 const ScreenContainer = styled(SafeAreaView)`
   display: flex;
   flex: 1;
@@ -115,47 +118,45 @@ const ScreenContainer = styled(SafeAreaView)`
 
 const HorizontalContainer = styled(View)`
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px;
 `
 
 // TEXTS
-
 const Title = styled(Text)`
   font-size: 20px;
-  color: white;
+  color: ${constants.colors.white};
   padding: 30px 0px;
 `
 
 const Subtitle = styled(Text)`
   font-size: 18px;
-  color: white;
+  color: ${constants.colors.white};
   padding: 10px;
 `
 
 const Body = styled(Text)`
   font-size: 17px;
-  color: white;
+  color: ${constants.colors.white};
   padding: 5px 10px;
   align-items: center;
   justify-content: center;
 `
 
 const TextPressable = styled(Body)`
-  color: black;
+  color: ${constants.colors.black};
 `
-const DeletePressableText = styled(Body)`
-  color: red;
+const DeleteElementText = styled(Body)`
+  color: ${constants.colors.red};
   font-size: 20px;
 `
 
 // OTHERS
-
 const StyledPressable = styled(Pressable)<{ disabled: boolean }>`
   display: flex;
   margin: 10px 0px;
   padding: 5px 10px;
-  background-color: ${(props) => (props.disabled ? 'grey' : 'orange')};
+  background-color: ${(props) => (props.disabled ? constants.colors.grey : constants.colors.orange)};
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -164,10 +165,10 @@ const StyledPressable = styled(Pressable)<{ disabled: boolean }>`
 const StyledTextInput = styled(TextInput)`
   display: flex;
   width: 50%;
-  padding: 5px 10px;
+  padding: 10px;
   margin: 10px;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid ${constants.colors.white};
+  color: ${constants.colors.white};
   border-radius: 10px;
 `
 
@@ -178,6 +179,6 @@ const List = styled(FlatList)`
 ` as unknown as new () => FlatList<[string, string | null]>
 
 const Separator = styled(View)`
-  border: 1px solid black;
+  border: 1px solid ${constants.colors.black};
   height: 1px;
 `

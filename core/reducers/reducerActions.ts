@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
-import constants from '../utils/Constants.json'
+import constants from 'utils/Constants.json'
 
 export const addElement = createAction(constants.reducerActions.addElement, (nextID: string, value: string) => {
   return {

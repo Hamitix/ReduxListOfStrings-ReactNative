@@ -10,8 +10,17 @@
     "removeElement": "REMOVE_ELEMENT",
     "reset": "RESET"
   },
+  "errors": {
+    "retrieveAllElements": "Error while retrieving elements from in AsyncStorage: ",
+    "getAllKeys": "Error while retrieving all keys in AsyncStorage: ",
+    "clearAllItems": "Error while clearing the AsyncStorage: "
+  },
   "colors": {
-    "placeholderInput": "grey",
-    "selectionInput": "orange"
+    "background": "#3d3d3d",
+    "grey": "#808080",
+    "orange": "#FF8E00",
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "red": "#FF0000"
   }
 }
